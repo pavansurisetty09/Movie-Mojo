@@ -1,0 +1,16 @@
+.item {
+  flex: 0 0 15.7%;
+  transition: transform 300ms ease 100ms;
+  margin: 0 2px;
+  position: relative;
+
+  img {
+    height: 100%;
+    width: 80%;
+    vertical-align: top;
+  }
+}
+
+.item img:hover {
+  box-shadow: 5px 5px 50px -14px rgba(235, 233, 228, 0.2);
+}

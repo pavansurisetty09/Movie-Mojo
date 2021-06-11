@@ -1,0 +1,513 @@
+  Movie card with clip path
+  
+  <div className="movie-card-container">
+      <div className="image-container">
+        <div
+          className="bg-image"
+          style={{ backgroundImage: `url(${image})` }}
+        />
+      </div>
+      <div className="movie-info">
+        <h2>Movie Details</h2>
+        <div>
+          <h1>{title}</h1>
+          <small>Released Date: {released}</small>
+        </div>
+        <h4>Rating: {rating} / 10</h4>
+        <p>{about && about.substr(0, 350)}</p>
+        <div className="tags-container">
+          {genre && genre.split(", ").map((g) => <span>{g}</span>)}
+        </div>
+      </div>
+    </div>
+
+----------------------------------------------CSS
+    .movie-card-container {
+  background-color: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
+    0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  min-height: 420px;
+  margin: 0 auto 50px;
+}
+
+.image-container {
+  -webkit-clip-path: circle(90% at 30px 30px);
+  clip-path: circle(90% at 30px 30px);
+  flex: 4;
+}
+
+.bg-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top left;
+  width: 100%;
+  height: 100%;
+}
+
+.movie-info {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  text-align: right;
+  padding: 30px 20px 30px 0;
+  z-index: 1;
+}
+
+.movie-info h2 {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 0 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.movie-info h1 {
+  font-weight: bold;
+  font-size: 36px;
+  margin: 20px 0 0;
+}
+
+.movie-info h4 {
+  margin: 20px 0 10px;
+}
+
+.movie-info p {
+  font-size: 14px;
+  margin: 10px 0;
+  width: 130%;
+}
+
+.movie-info .tags-container {
+  position: relative;
+  width: 225%;
+}
+
+.movie-info .tags-container span {
+  border: 2px solid black;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 12px;
+  padding: 3px 10px;
+  margin: 5px;
+}
+
+---------------------------------------------------------------------------------------------------------
+
+body {  
+  
+  background:linear-gradient(
+      rgba(30,27,38, 0.95), 
+      rgba(30,27,38, 0.95)),
+    url("https://i.ibb.co/FDGqCmM/papers-co-ag74-interstellar-wide-space-film-movie-art-33-iphone6-wallpaper.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+}
+-------------------------------------------------------------
+ -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, rgba(0, 0, 0, 1)),
+    color-stop(0.35, rgba(0, 0, 0, 1)),
+    color-stop(0.5, rgba(0, 0, 0, 1)),
+    color-stop(0.65, rgba(0, 0, 0, 1)),
+    color-stop(0.85, rgba(0, 0, 0, 0.6)),
+    color-stop(1, rgba(0, 0, 0, 0))
+  );
+---------------------------------------------------------------
+  .movie {
+    
+  /* background: -moz-linear-gradient(
+    top,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0.06) 39%,
+    rgba(30, 27, 38, 0.88) 53%,
+    rgba(30, 27, 38, 1) 55%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0.06) 39%,
+    rgba(30, 27, 38, 0.88) 53%,
+    rgba(30, 27, 38, 1) 55%
+  ); */
+  /* Chrome10-25,Safari5.1-6 */
+  /* background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0.06) 39%,
+    rgba(30, 27, 38, 0.88) 53%,
+    rgba(30, 27, 38, 1) 55%
+  ); */
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#1e1b26',GradientType=0); */
+  /* IE6-9 */
+  /* position: absolute;
+  background-size: contain;
+  background-size: cover;
+  z-index: 1 !important;
+  width: 375px;
+  height: 660px;
+  display: block;
+  border-radius: 4px; */
+}
+
+-------------------------------------------------------
+.cellphone-container {
+  width: 375px;
+  height: 650px;
+  background-color: #1e1b26;
+  margin: 60px auto 0 auto;
+  box-shadow: 5px 5px 115px -14px black;
+  border-radius: 4px;
+  margin: 80px;
+}
+
+--------------------------------------------------------------------
+ <div className="container">
+      <div className="flex">
+        {movies.map((movie, i) => {
+          const { title, image, about, genre, released, rating, artists } =
+            movie;
+          return (
+            <div className="card" key={i}>
+              <div className="imgBx ">
+                <img src={image} height="450px" width="300px" alt={title} />
+              </div>
+
+              <div className="contentBx">
+                <div className="flex1">
+                  <h4 className="glow">{title}</h4>
+                  <span className="px-2 glow">{`(${released})`}</span>
+                </div>
+                <div className="size ">
+                  <span className="glow">{genre}</span>
+                </div>
+                <hr
+                  style={{
+                    width: "75%",
+                    margin: "auto",
+                    border: "1.5px solid yellow",
+                  }}
+                />
+                <div className="color">
+                  <div className="glow">
+                    <span>
+                      <strong>Director: </strong>
+                    </span>
+                  </div>
+                  <div className="glow">
+                    <span>
+                      <strong>Artists: </strong>
+                    </span>
+                    {artists.map((artist) => artist.name).join(", ")}
+                  </div>
+                  <div className="glow">
+                    <span>
+                      <strong>Rating: </strong>
+                    </span>
+                    {rating}
+                    <AiIcons.AiFillStar style={{ color: "yellow" }} />
+                  </div>
+                  <div className="container2">
+                    <div type="button" className="button2">
+                      Show More
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+----------------------------------------------------------------------------------
+ <div>
+      <div className="row-fluid top30 pagetitle">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h1>News Feed</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-3">
+            <h4 className>Search</h4>
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+                name="srch-term"
+                id="srch-term"
+              />
+              <div className="input-group-btn">
+                <button className="btn btn-default" type="submit">
+                  <i className="glyphicon glyphicon-search" />
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="btn btn-default btn-sm btn-block hidden-lg hidden-md"
+              data-toggle="collapse"
+              data-target="#demo"
+            >
+              Refine your search <span className="caret" />
+            </button>
+            <div id="demo" className="collapse in">
+              <hr />
+              <div className="list-group list-group">
+                <h4 className>Category</h4>
+                <a href="#" className="list-group-item">
+                  <span className="badge">14</span> Active item{" "}
+                  <span className="label label-primary">New</span>
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">3</span> Second item
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">25</span> Third item
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">14</span> Active item
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">3</span> Second item
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">25</span> Third item
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">14</span> Active item
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">3</span> Second item
+                </a>
+                <div id="categories" className="collapse">
+                  <a href="#" className="list-group-item">
+                    <span className="badge">14</span> Active item
+                  </a>
+                  <a href="#" className="list-group-item">
+                    <span className="badge">3</span> Second item
+                  </a>
+                  <a href="#" className="list-group-item">
+                    <span className="badge">25</span> Third item
+                  </a>
+                  <a href="#" className="list-group-item">
+                    <span className="badge">14</span> Active item
+                  </a>
+                  <a href="#" className="list-group-item">
+                    <span className="badge">3</span> Second item
+                  </a>
+                </div>
+                <button
+                  className="btn btn-default btn-sm btn-block"
+                  data-toggle="collapse"
+                  data-target="#categories"
+                >
+                  More <span className="caret" />
+                </button>
+                <hr className />
+                <h4 className>Viewing Options</h4>
+                <a href="#" className="list-group-item">
+                  <span className="badge">14</span> Upcoming Sessions
+                </a>
+                <a href="#" className="list-group-item">
+                  <span className="badge">3</span> OnDemand
+                </a>
+                <hr className />
+                <a href="#" className="list-group-item">
+                  Archived Courses
+                </a>
+                <a href="#" className="list-group-item">
+                  Courses In Development
+                </a>
+              </div>
+            </div>
+            <div className="hidden-sm hidden-xs">
+              <hr />
+              <div className="well">
+                <h4>Premium Membership</h4>
+                <p>Gain unlimited access to our entire course library.</p>
+                <button className="btn btn-sm btn-warning">Learn more</button>
+                <hr />
+                <p className="text-center ">
+                  Already a member? <a href="#">Sign in.</a>
+                </p>
+              </div>
+              <hr />
+              <div className="well">
+                <h4>Course Catalog</h4>
+                <p>
+                  <a href="#">
+                    <img
+                      src="http://placehold.it/400X500"
+                      className="img-responsive"
+                    />
+                  </a>
+                </p>
+                <p>
+                  Everything you need to know about our webinars, including
+                  speaker bios, topics, and courses.
+                </p>
+                <button className="btn btn-sm btn-block btn-warning">
+                  Download
+                </button>
+              </div>
+              <hr />
+              <h4 className="text-center">CPE Partners</h4>
+              <p>
+                <a href="#">
+                  <img
+                    className="center-block"
+                    src="http://placehold.it/100X100"
+                  />
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="col-md-9">
+            <div className="well hidden-xs">
+              <div className="row">
+                <div className="col-xs-4">
+                  <select className="form-control">
+                    <option>Featured</option>
+                    <option>Recently Added</option>
+                    <option>Next Upcoming Session</option>
+                    <option>A-Z</option>
+                    <option>Z-A</option>
+                  </select>
+                </div>
+                <div className="col-xs-8">
+                  <div className="btn-group pull-right">
+                    <button type="button" className="btn btn-default">
+                      <span className="glyphicon glyphicon-th" />
+                    </button>
+                    <button type="button" className="btn btn-default active">
+                      <span className="glyphicon glyphicon-th-list" />
+                    </button>
+                    <button type="button" className="btn btn-default">
+                      <span className="glyphicon glyphicon-list" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-4">
+                <a href="#" className>
+                  <img
+                    src="http://placehold.it/1280X720"
+                    className="img-responsive"
+                  />
+                </a>
+              </div>
+              <div className="col-sm-8">
+                <h3 className="title">
+                  How to Fight Fraud with Artificial Intelligence and
+                  Intelligent Analytics
+                </h3>
+                <p className="text-muted">
+                  <span className="glyphicon glyphicon-lock" /> Available
+                  Exclusively for Premium Members
+                </p>
+                <p>
+                  Could artificial intelligence have been used to prevent the
+                  high-profile Target breach? The concept is not so far-fetched.
+                  Organizations such as Mastercard and RBS WorldPay have long
+                  relied on artificial intelligence to detect fraudulent
+                  transaction patterns and prevent card.
+                </p>
+                <p className="text-muted">
+                  Presented by <a href="#">Coffin John</a>
+                </p>
+              </div>
+            </div>
+            <hr />
+            <ul className="pagination pagination-lg pull-right">
+              <li>
+                <a href="#">«</a>
+              </li>
+              <li className="active">
+                <a href="#">1</a>
+              </li>
+              <li>
+                <a href="#">2</a>
+              </li>
+              <li>
+                <a href="#">3</a>
+              </li>
+              <li>
+                <a href="#">4</a>
+              </li>
+              <li>
+                <a href="#">5</a>
+              </li>
+              <li>
+                <a href="#">»</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
+-------------------------------
+CSS
+// .pagetitle {
+//   border-bottom: 1px solid #cccccc;
+//   padding-bottom: 30px;
+//   margin-bottom: 30px;
+// }
+--------------------------------------------------------------------------------------------------
+<div className="news-card" key={i}>
+              <div className="news-imgBx">
+                <img
+                  src={urlToImage}
+                  alt={"news"}
+                  width="200px"
+                  height="250px"
+                />
+              </div>
+              <div className="news-contentBx">
+                <div className="flex1">
+                  <h4 className="glow">{title}</h4>
+                  <span className="glow rel">{publishedAt}</span>
+                </div>
+                <div className="size">
+                  <span className="glow rel">{author}</span>
+                </div>
+                <hr className="content-styling" />
+
+                <div className="container2">
+                  <div type="button" className="button2">
+                    Show More
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
