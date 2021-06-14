@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./News.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function NewsHome() {
   const [news, setNews] = useState([{}]);
@@ -35,7 +36,7 @@ function NewsHome() {
           } = news;
 
           return (
-            <div className="movie-card-container" onClick={url}>
+            <div className="movie-card-container">
               <div className="image-container">
                 <div
                   className="bg-image"
@@ -54,7 +55,7 @@ function NewsHome() {
                 {/* <h4>Rating: {rating} / 10</h4> */}
                 <p>{content}</p>
                 <div className="tags-container">
-                  {<span>{"Watch News"}</span>}
+                  <a href={url}>{<span>{"Watch News"}</span>}</a>
                 </div>
               </div>
             </div>

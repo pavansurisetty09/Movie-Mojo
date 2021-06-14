@@ -134,6 +134,7 @@
 
 .end-message {
   display: flex;
+  margin: auto;
 }
 
 .want-more {
@@ -148,7 +149,7 @@
   display: flex;
   margin-bottom: 100px;
   gap: 100px;
-  transform: translateX(35%);
+  transform: translateX(30%);
 }
 
 .btn {
@@ -163,4 +164,10 @@
   background: red;
   padding: 30px 60px;
   color: #fff;
+}
+
+@media (max-width: 500px) {
+  .end-buttons {
+    transform: translateX(0%);
+  }
 }

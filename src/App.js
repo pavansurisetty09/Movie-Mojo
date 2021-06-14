@@ -14,32 +14,36 @@ import Trending from "./components/pages/entertainment/News/Trending";
 import Music from "./components/pages/entertainment/Music";
 import TrendingMovies from "./components/pages/entertainment/Movies/TrendingMovies";
 import PopularMovies from "./components/pages/entertainment/Movies/PopularMovies";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   const [sidebar, setsidebar] = useState(false);
   const showSidebar = () => setsidebar(!sidebar);
 
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/movies" component={MovieCard} />
-          <Route exact path="/movies/trending" component={TrendingMovies} />
-          <Route exact path="/movies/popular" component={PopularMovies} />
-          <Route exact path="/" component={SliderItem} />
-          <Route exact path="/videos" component={SliderItem} />
-          <Route exact path="/entertainment" component={SliderItem} />
-          <Route exact path="/news" component={NewsHome} />
-          <Route exact path="/news/trending" component={Trending} />
-          <Route exact path="/news/live" component={Live} />
-          <Route exact path="/music" component={Music} />
-        </Switch>
-        <Navbar />
-        <SideBar sidebar={sidebar} showSidebar={showSidebar} />
-      </Router>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/movies" component={MovieCard} />
+            <Route exact path="/movies/trending" component={TrendingMovies} />
+            <Route exact path="/movies/popular" component={PopularMovies} />
+            <Route exact path="/" component={SliderItem} />
+            <Route exact path="/videos" component={SliderItem} />
+            <Route exact path="/entertainment" component={SliderItem} />
+            <Route exact path="/news" component={NewsHome} />
+            <Route exact path="/news/trending" component={Trending} />
+            <Route exact path="/news/live" component={Live} />
+            <Route exact path="/music" component={Music} />
+          </Switch>
+          <Navbar />
+          <SideBar sidebar={sidebar} showSidebar={showSidebar} />
+        </Router>
+      </div>
+    </Provider>
   );
 }
 

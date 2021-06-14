@@ -1,26 +1,35 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { connect } from "react-redux";
 import "./MovieCard.scss";
 import * as AiIcons from "react-icons/ai";
 import InfiniteScroll from "react-infinite-scroll-component";
 import App from "../../App";
+import PropTypes from "prop-types";
+import {
+  getMovies,
+  setHasMore,
+  setSkip,
+  fetchMoreMovies,
+  getTotal,
+} from "../../actions/movieCardActions";
 
-function MovieCard() {
-  const [movies, setMovies] = useState([]);
-  const [skip, setSkip] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [total, setTotal] = useState(0);
+function MovieCard({
+  movie: { movies, total, hasMore, skip },
+  getMovies,
+  getTotal,
+  setHasMore,
+  setSkip,
+  fetchMoreMovies,
+}) {
+  // const [skip, setSkip] = useState(1);
+  // const [hasMore, setHasMore] = useState(true);
+  // const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const getData = async () =>
-      await axios("/movies")
-        .then((res) => res.data)
-        .then((data) => {
-          setMovies(data.movies);
-          setTotal(data.total);
-        });
-    getData();
+    getMovies();
+    getTotal();
   }, []);
 
   const loader = (
@@ -33,22 +42,22 @@ function MovieCard() {
     </div>
   );
 
-  const fetchMoreMovies = async () => {
-    await axios
-      .get(`/movies?skip=${skip}&limit=16`)
-      .then((res) => res.data)
-      .then((data) => {
-        setMovies(movies.slice().concat(data.movies));
-      });
-  };
+  // const fetchMoreMovies = async () => {
+  //   await axios
+  //     .get(`/movies?skip=${skip}&limit=16`)
+  //     .then((res) => res.data)
+  //     .then((data) => {
+  //       movies(movies.slice().concat(data.movies));
+  //     });
+  // };
 
   const loadMore = () => {
     if (movies.length >= total) {
-      setHasMore(false);
+      setHasMore();
     } else {
       setTimeout(() => {
-        fetchMoreMovies();
-        setSkip(skip + 1);
+        fetchMoreMovies(skip);
+        setSkip();
       }, 1000);
     }
   };
@@ -137,4 +146,18 @@ function MovieCard() {
   );
 }
 
-export default MovieCard;
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  movie: state.movieCard,
+});
+
+export default connect(mapStateToProps, {
+  getMovies,
+  getTotal,
+  setHasMore,
+  setSkip,
+  fetchMoreMovies,
+})(MovieCard);

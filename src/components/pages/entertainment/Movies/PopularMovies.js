@@ -92,8 +92,7 @@ function PopularMovies() {
       <div className="container">
         <div className="flex">
           {movies.map((movie, i) => {
-            const { title, image, genre, released, rating, poster_path } =
-              movie;
+            const { title, overview, genre, released, vote_average } = movie;
             return (
               <div className="card" key={i}>
                 <div className="imgBx">
@@ -115,15 +114,13 @@ function PopularMovies() {
                   <hr className="content-styling" />
                   <div className="color">
                     <div className="glow">
-                      <span>
-                        <strong>Director: </strong>
-                      </span>
+                      <span>{overview && overview.substr(0, 130)}</span>
                     </div>
                     <div className="glow rel">
                       <span>
                         <strong>Rating: </strong>
                       </span>
-                      {rating}
+                      {vote_average === 0 ? "no rating" : vote_average}
                       <AiIcons.AiFillStar
                         style={{
                           color: "yellow",

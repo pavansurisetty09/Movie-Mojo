@@ -35,3 +35,13 @@
     }
   }
 }
+
+@media screen and (max-width: 500px) {
+  .slide-button {
+    margin-top: 40px;
+  }
+
+  .slide-button span {
+    width: 20px;
+  }
+}
