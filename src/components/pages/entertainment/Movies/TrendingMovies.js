@@ -1,33 +1,30 @@
 import React, { useEffect, useState, Fragment } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-// import "./MovieCard.scss";
+import { connect } from "react-redux";
 import * as AiIcons from "react-icons/ai";
 import InfiniteScroll from "react-infinite-scroll-component";
+import {
+  getTrendingMovies,
+  fetchMoreMovies,
+  setHasMore,
+  setSkip,
+  getTotal,
+} from "../../../../actions/trendingMovieActions";
 
-function TrendingMovies() {
-  const [movies, setMovies] = useState([{}]);
-  const [skip, setSkip] = useState(50);
-  const [hasMore, setHasMore] = useState(true);
-  const [total, setTotal] = useState(0);
-
-  const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?/sort_by=popularity.desc&api_key=e0936b38f3d577200421f706a99badd3&page=${skip}`;
+function TrendingMovies({
+  trendingMovies: { trendingMovies, skip, hasMore, total },
+  getTrendingMovies,
+  fetchMoreMovies,
+  setHasMore,
+  setSkip,
+  getTotal,
+}) {
   const IMG_API = "https://image.tmdb.org/t/p/w1280";
 
   useEffect(() => {
-    const getData = async () =>
-      await axios(FEATURED_API)
-        .then((res) => res.data)
-        .then((data) => {
-          console.log(data);
-          setMovies(data.results);
-          setTotal(data.total_pages);
-        });
-    getData();
+    getTrendingMovies(skip);
+    getTotal();
   }, []);
-
-  console.log(movies);
-  console.log(total);
 
   const loader = (
     <div>
@@ -39,22 +36,13 @@ function TrendingMovies() {
     </div>
   );
 
-  const fetchMoreMovies = async () => {
-    setSkip(skip + 1);
-    await axios
-      .get(FEATURED_API)
-      .then((res) => res.data)
-      .then((data) => {
-        setMovies(movies.slice().concat(data.results));
-      });
-  };
-
   const loadMore = () => {
-    if (movies.length >= total) {
-      setHasMore(false);
+    if (trendingMovies.length >= total) {
+      setHasMore();
     } else {
       setTimeout(() => {
-        fetchMoreMovies();
+        fetchMoreMovies(skip);
+        setSkip();
       }, 1000);
     }
   };
@@ -82,7 +70,7 @@ function TrendingMovies() {
 
   return (
     <InfiniteScroll
-      dataLength={movies.length}
+      dataLength={trendingMovies.length}
       next={loadMore}
       hasMore={hasMore}
       loader={loader}
@@ -91,7 +79,7 @@ function TrendingMovies() {
     >
       <div className="container">
         <div className="flex">
-          {movies.map((movie, i) => {
+          {trendingMovies.map((movie, i) => {
             const { title, overview, genre, released, vote_average } = movie;
             return (
               <div className="card" key={i}>
@@ -144,4 +132,14 @@ function TrendingMovies() {
   );
 }
 
-export default TrendingMovies;
+const mapStateToProps = (state) => ({
+  trendingMovies: state.trendingMovies,
+});
+
+export default connect(mapStateToProps, {
+  getTrendingMovies,
+  fetchMoreMovies,
+  setHasMore,
+  setSkip,
+  getTotal,
+})(TrendingMovies);

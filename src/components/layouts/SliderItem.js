@@ -1,62 +1,30 @@
-import React, { useState, useEffect, Fragment } from "react";
-import axios from "axios";
+import React, { useEffect, Fragment } from "react";
+import { connect } from "react-redux";
 import SliderCom from "./SliderCom";
 import { Link } from "react-router-dom";
+import {
+  getSliderMovies,
+  getSliderMovies1,
+  getSliderMovies2,
+  getSliderMovies3,
+  getSliderMovies4,
+} from "../../actions/sliderActions";
 
-function SliderItem() {
-  const [movies, setMovies] = useState([{}]);
-  const [movies1, setMovies1] = useState([{}]);
-  const [movies2, setMovies2] = useState([{}]);
-  const [movies3, setMovies3] = useState([{}]);
-  const [movies4, setMovies4] = useState([{}]);
-
-  const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?/sort_by=popularity.desc&api_key=e0936b38f3d577200421f706a99badd3&page=1`;
-  const FEATURED_API1 = `https://api.themoviedb.org/3/discover/movie?/sort_by=popularity.desc&api_key=e0936b38f3d577200421f706a99badd3&page=9`;
-  const FEATURED_API2 = `https://api.themoviedb.org/3/discover/movie?/sort_by=popularity.desc&api_key=e0936b38f3d577200421f706a99badd3&page=3`;
-  const FEATURED_API3 = `https://api.themoviedb.org/3/discover/movie?/sort_by=popularity.desc&api_key=e0936b38f3d577200421f706a99badd3&page=6`;
-  const FEATURED_API4 = `https://api.themoviedb.org/3/discover/movie?/sort_by=popularity.desc&api_key=e0936b38f3d577200421f706a99badd3&page=8`;
-
+function SliderItem({
+  sliderMovies: { movies, movies1, movies2, movies3, movies4 },
+  getSliderMovies,
+  getSliderMovies1,
+  getSliderMovies2,
+  getSliderMovies3,
+  getSliderMovies4,
+}) {
   useEffect(() => {
-    const getData = () =>
-      axios(FEATURED_API)
-        .then((res) => res.data)
-        .then((data) => {
-          setMovies(data.results);
-        });
-    getData();
-  }, [FEATURED_API]);
-
-  useEffect(() => {
-    axios(FEATURED_API1)
-      .then((res) => res.data)
-      .then((data) => {
-        setMovies1(data.results);
-      });
-  }, [FEATURED_API1]);
-
-  useEffect(() => {
-    axios(FEATURED_API2)
-      .then((res) => res.data)
-      .then((data) => {
-        setMovies2(data.results);
-      });
-  }, [FEATURED_API2]);
-
-  useEffect(() => {
-    axios(FEATURED_API3)
-      .then((res) => res.data)
-      .then((data) => {
-        setMovies3(data.results);
-      });
-  }, [FEATURED_API3]);
-
-  useEffect(() => {
-    axios(FEATURED_API4)
-      .then((res) => res.data)
-      .then((data) => {
-        setMovies4(data.results);
-      });
-  }, [FEATURED_API4]);
+    getSliderMovies();
+    getSliderMovies1();
+    getSliderMovies2();
+    getSliderMovies3();
+    getSliderMovies4();
+  }, []);
 
   return (
     <Fragment>
@@ -86,4 +54,14 @@ function SliderItem() {
   );
 }
 
-export default SliderItem;
+const mapStateToProps = (state) => ({
+  sliderMovies: state.slider,
+});
+
+export default connect(mapStateToProps, {
+  getSliderMovies,
+  getSliderMovies1,
+  getSliderMovies2,
+  getSliderMovies3,
+  getSliderMovies4,
+})(SliderItem);

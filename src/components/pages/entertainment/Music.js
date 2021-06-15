@@ -6,7 +6,7 @@ function Music() {
   const [news, setNews] = useState([{}]);
 
   const NEWS_API =
-    "https://newsapi.org/v2/everything?q=Apple&from=2021-06-11&sortBy=popularity&apiKey=63c7f82e5dc247f4bb0e62aca339392b";
+    "https://newsapi.org/v2/everything?q=music&from=2021-06-11&sortBy=popularity&apiKey=63c7f82e5dc247f4bb0e62aca339392b";
 
   useEffect(() => {
     function getNews() {
@@ -35,7 +35,7 @@ function Music() {
           } = news;
 
           return (
-            <div className="movie-card-container" onClick={url}>
+            <div className="movie-card-container">
               <div className="image-container">
                 <div
                   className="bg-image"
@@ -43,18 +43,20 @@ function Music() {
                 />
               </div>
               <div className="movie-info">
-                <h2>News Details</h2>
+                <h2>Music Details</h2>
                 <span>by</span>
                 <h3>{author}</h3>
 
                 <div>
                   <h1>{title}</h1>
-                  <small>News Time: {publishedAt}</small>
+                  <small>Music Time: {publishedAt}</small>
                 </div>
                 {/* <h4>Rating: {rating} / 10</h4> */}
                 <p>{content}</p>
                 <div className="tags-container">
-                  {<span>{"Watch News"}</span>}
+                  <a href={url} target="_blank">
+                    {<span>{"Listen Music"}</span>}
+                  </a>
                 </div>
               </div>
             </div>

@@ -9,8 +9,8 @@ const MenuItem = ({ item, index, showSidebar }) => {
 
   const showSubItems = () => item.items && setShow(!show);
   return (
-    <div className="sidebar">
-      <div key={index} className={item.cName}>
+    <div key={index} className="sidebar">
+      <div className={item.cName}>
         <Link to={item.path} onClick={showSidebar}>
           {item.icon}
           <span>{item.title}</span>

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
-import { AiOutlineClose } from "react-icons/ai";
+// import { AiOutlineClose } from "react-icons/ai";
 import { SideBarData } from "./SideBarData";
 import "./SideBarMenu.css";
 import Navbar from "./Navbar";

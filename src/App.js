@@ -16,6 +16,8 @@ import TrendingMovies from "./components/pages/entertainment/Movies/TrendingMovi
 import PopularMovies from "./components/pages/entertainment/Movies/PopularMovies";
 import { Provider } from "react-redux";
 import store from "./store";
+import Artists from "./components/pages/entertainment/Artists";
+import Reviews from "./components/pages/entertainment/Reviews";
 
 function App() {
   const [sidebar, setsidebar] = useState(false);
@@ -38,6 +40,8 @@ function App() {
             <Route exact path="/news/trending" component={Trending} />
             <Route exact path="/news/live" component={Live} />
             <Route exact path="/music" component={Music} />
+            <Route exact path="/artists" component={Artists} />
+            <Route exact path="/reviews" component={Reviews} />
           </Switch>
           <Navbar />
           <SideBar sidebar={sidebar} showSidebar={showSidebar} />

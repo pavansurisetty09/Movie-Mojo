@@ -1,28 +1,18 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { connect } from "react-redux";
 import "./News.scss";
 import axios from "axios";
+import { getNews } from "../../../../actions/newsActions";
 
-function Live() {
-  const [news, setNews] = useState([{}]);
-
-  const NEWS_API =
-    "https://newsapi.org/v2/everything?q=Apple&from=2021-06-11&sortBy=popularity&apiKey=63c7f82e5dc247f4bb0e62aca339392b";
-
+function Live({ news, getNews }) {
   useEffect(() => {
-    function getNews() {
-      axios
-        .get(NEWS_API)
-        .then((res) => res.data)
-        .then((data) => {
-          setNews(data.articles);
-        });
-    }
     getNews();
   }, []);
+
   return (
     <div className="wrap">
       <div className="box">
-        {news.map((news) => {
+        {news.news.map((news) => {
           const { author, content, publishedAt, title, url, urlToImage } = news;
 
           return (
@@ -61,7 +51,9 @@ function Live() {
                 {/* <h4>Rating: {rating} / 10</h4> */}
                 <p>{content}</p>
                 <div className="tags-container">
-                  {<span>{"Watch News"}</span>}
+                  <a href={url} target="_blank">
+                    {<span>{"Watch News"}</span>}
+                  </a>
                 </div>
               </div>
             </div>
@@ -71,4 +63,9 @@ function Live() {
     </div>
   );
 }
-export default Live;
+
+const mapStateToProps = (state) => ({
+  news: state.newsCards,
+});
+
+export default connect(mapStateToProps, { getNews })(Live);

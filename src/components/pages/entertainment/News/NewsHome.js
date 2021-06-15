@@ -1,13 +1,19 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./News.scss";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 function NewsHome() {
   const [news, setNews] = useState([{}]);
+  const [date, setDate] = useState(0);
 
-  const NEWS_API =
-    "https://newsapi.org/v2/everything?q=Apple&from=2021-06-11&sortBy=popularity&apiKey=63c7f82e5dc247f4bb0e62aca339392b";
+  useEffect(() => {
+    const currentDate = () => {
+      setDate(new Date().toJSON().slice(0, 10));
+    };
+    currentDate();
+  }, []);
+
+  const NEWS_API = `https://newsapi.org/v2/everything?q=Apple&from=${date}&sortBy=popularity&apiKey=63c7f82e5dc247f4bb0e62aca339392b`;
 
   useEffect(() => {
     function getNews() {
@@ -24,7 +30,7 @@ function NewsHome() {
   return (
     <div className="wrap">
       <div className="box">
-        {news.map((news) => {
+        {news.map((news, i) => {
           const {
             author,
             content,
@@ -36,7 +42,7 @@ function NewsHome() {
           } = news;
 
           return (
-            <div className="movie-card-container">
+            <div key={i} className="movie-card-container">
               <div className="image-container">
                 <div
                   className="bg-image"
@@ -44,7 +50,7 @@ function NewsHome() {
                 />
               </div>
               <div className="movie-info">
-                <h2>News Details</h2>
+                <h2>{date}</h2>
                 <span>by</span>
                 <h3>{author}</h3>
 
@@ -52,10 +58,11 @@ function NewsHome() {
                   <h1>{title}</h1>
                   <small>News Time: {publishedAt}</small>
                 </div>
-                {/* <h4>Rating: {rating} / 10</h4> */}
                 <p>{content}</p>
                 <div className="tags-container">
-                  <a href={url}>{<span>{"Watch News"}</span>}</a>
+                  <a href={url} target="_blank">
+                    {<span>{"Watch News"}</span>}
+                  </a>
                 </div>
               </div>
             </div>
