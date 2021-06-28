@@ -20,10 +20,10 @@ export const getMovies = () => async (dispatch) => {
           type: GET_MOVIES,
           payload: data,
         });
-        console.log(data);
+        // console.log(data);
       });
   } catch (err) {
-    console.log("err", err);
+    console.error("err", err);
   }
 };
 

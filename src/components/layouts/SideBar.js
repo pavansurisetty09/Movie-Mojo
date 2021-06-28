@@ -1,7 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-// import * as FaIcons from "react-icons/fa";
-// import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import PropTypes from "prop-types";
 import SideBarData from "./SideBarData";

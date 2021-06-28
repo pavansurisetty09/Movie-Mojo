@@ -24,15 +24,7 @@ function Music() {
     <div className="wrap">
       <div className="box">
         {news.map((news) => {
-          const {
-            author,
-            content,
-            description,
-            publishedAt,
-            title,
-            url,
-            urlToImage,
-          } = news;
+          const { author, content, publishedAt, title, url, urlToImage } = news;
 
           return (
             <div className="movie-card-container">

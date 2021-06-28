@@ -9,6 +9,7 @@ function NewsHome() {
   useEffect(() => {
     const currentDate = () => {
       setDate(new Date().toJSON().slice(0, 10));
+      // moment(Date.now()).format('MM-DD-YYYY');
     };
     currentDate();
   }, []);
