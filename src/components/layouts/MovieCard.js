@@ -23,6 +23,7 @@ function MovieCard({
   setSkip,
   fetchMoreMovies,
 }) {
+  // const [movies, setMovies] = useState([]);
   // const [skip, setSkip] = useState(1);
   // const [hasMore, setHasMore] = useState(true);
   // const [total, setTotal] = useState(0);
