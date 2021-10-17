@@ -5,7 +5,7 @@ const SLIDERMOVIES_API = `https://api.themoviedb.org/3/discover/movie?/sort_by=p
 
 export const getSliderMovies = () => async (dispatch) => {
   axios
-    .get(`${SLIDERMOVIES_API}=1`)
+    .get(`${SLIDERMOVIES_API}=4`)
     .then((res) => res.data)
     .then((data) => {
       dispatch({
