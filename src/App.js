@@ -33,7 +33,7 @@ function App() {
             <Route exact path="/movies" component={MovieCard} />
             <Route exact path="/movies/trending" component={TrendingMovies} />
             <Route exact path="/movies/popular" component={PopularMovies} />
-            <Route exact path="/Movie-Mojo" component={SliderItem} />
+            <Route exact path="/" component={SliderItem} />
             <Route exact path="/videos" component={SliderItem} />
             <Route exact path="/entertainment" component={SliderItem} />
             <Route exact path="/news" component={NewsHome} />
