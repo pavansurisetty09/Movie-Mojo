@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/moviemojo/static/css/main.fbbe44dd.chunk.css",
-    "main.js": "/moviemojo/static/js/main.05a2552c.chunk.js",
-    "main.js.map": "/moviemojo/static/js/main.05a2552c.chunk.js.map",
-    "runtime-main.js": "/moviemojo/static/js/runtime-main.15bab42a.js",
-    "runtime-main.js.map": "/moviemojo/static/js/runtime-main.15bab42a.js.map",
-    "static/js/2.340a5240.chunk.js": "/moviemojo/static/js/2.340a5240.chunk.js",
-    "static/js/2.340a5240.chunk.js.map": "/moviemojo/static/js/2.340a5240.chunk.js.map",
-    "index.html": "/moviemojo/index.html",
-    "static/css/main.fbbe44dd.chunk.css.map": "/moviemojo/static/css/main.fbbe44dd.chunk.css.map",
-    "static/js/2.340a5240.chunk.js.LICENSE.txt": "/moviemojo/static/js/2.340a5240.chunk.js.LICENSE.txt"
+    "main.css": "/Movie-Mojo/static/css/main.fbbe44dd.chunk.css",
+    "main.js": "/Movie-Mojo/static/js/main.05a2552c.chunk.js",
+    "main.js.map": "/Movie-Mojo/static/js/main.05a2552c.chunk.js.map",
+    "runtime-main.js": "/Movie-Mojo/static/js/runtime-main.2a99adf6.js",
+    "runtime-main.js.map": "/Movie-Mojo/static/js/runtime-main.2a99adf6.js.map",
+    "static/js/2.340a5240.chunk.js": "/Movie-Mojo/static/js/2.340a5240.chunk.js",
+    "static/js/2.340a5240.chunk.js.map": "/Movie-Mojo/static/js/2.340a5240.chunk.js.map",
+    "index.html": "/Movie-Mojo/index.html",
+    "static/css/main.fbbe44dd.chunk.css.map": "/Movie-Mojo/static/css/main.fbbe44dd.chunk.css.map",
+    "static/js/2.340a5240.chunk.js.LICENSE.txt": "/Movie-Mojo/static/js/2.340a5240.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.15bab42a.js",
+    "static/js/runtime-main.2a99adf6.js",
     "static/js/2.340a5240.chunk.js",
     "static/css/main.fbbe44dd.chunk.css",
     "static/js/main.05a2552c.chunk.js"
