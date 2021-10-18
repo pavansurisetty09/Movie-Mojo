@@ -1,7 +1,6 @@
 {
   "name": "movie-mojo",
   "version": "0.1.0",
-  "homepage": "https://rishirhyspavan.github.io/Movie-Mojo",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
@@ -40,9 +39,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

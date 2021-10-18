@@ -23,43 +23,25 @@ function App() {
   const [sidebar, setsidebar] = useState(false);
   const showSidebar = () => setsidebar(!sidebar);
 
-  const baseURL = "/Movie-Mojo";
-
   return (
     <Provider store={store}>
       <div className="App">
         <Router>
           <Switch>
-            <Route exact path="/Movie-Mojo/login" component={Login} />
-            <Route exact path="/Movie-Mojo/register" component={Register} />
-            <Route exact path="/Movie-Mojo/movies" component={MovieCard} />
-            <Route
-              exact
-              path="/Movie-Mojo/movies/trending"
-              component={TrendingMovies}
-            />
-            <Route
-              exact
-              path="/Movie-Mojo/movies/popular"
-              component={PopularMovies}
-            />
-            <Route exact path="/Movie-Mojo" component={SliderItem} />
-            <Route exact path="/Movie-Mojo/videos" component={SliderItem} />
-            <Route
-              exact
-              path="/Movie-Mojo/entertainment"
-              component={SliderItem}
-            />
-            <Route exact path="/Movie-Mojo/news" component={NewsHome} />
-            <Route
-              exact
-              path="/Movie-Mojo/news/trending"
-              component={Trending}
-            />
-            <Route exact path="/Movie-Mojo/news/live" component={Live} />
-            <Route exact path="/Movie-Mojo/music" component={Music} />
-            <Route exact path="/Movie-Mojo/artists" component={Artists} />
-            <Route exact path="/Movie-Mojo/reviews" component={Reviews} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/movies" component={MovieCard} />
+            <Route exact path="/movies/trending" component={TrendingMovies} />
+            <Route exact path="/movies/popular" component={PopularMovies} />
+            <Route exact path="/" component={SliderItem} />
+            <Route exact path="/videos" component={SliderItem} />
+            <Route exact path="/entertainment" component={SliderItem} />
+            <Route exact path="/news" component={NewsHome} />
+            <Route exact path="/news/trending" component={Trending} />
+            <Route exact path="/news/live" component={Live} />
+            <Route exact path="/music" component={Music} />
+            <Route exact path="/artists" component={Artists} />
+            <Route exact path="/reviews" component={Reviews} />
           </Switch>
           <Navbar />
           <SideBar sidebar={sidebar} showSidebar={showSidebar} />
