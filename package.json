@@ -1,7 +1,7 @@
 {
   "name": "movie-mojo",
   "version": "0.1.0",
-  "homepage": "https://rishirhyspavan.github.io/moviemojo",
+  "homepage": "https://rishirhyspavan.github.io/Movie-Mojo",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
