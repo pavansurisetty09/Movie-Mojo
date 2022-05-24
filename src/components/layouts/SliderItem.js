@@ -11,7 +11,15 @@ import {
 } from "../../actions/sliderActions";
 
 function SliderItem({
-  sliderMovies: { movies, movies1, movies2, movies3, movies4 },
+  sliderMovies: {
+    movies,
+    movies1,
+    movies2,
+    movies3,
+    movies4,
+    searchedMovies,
+    error,
+  },
   getSliderMovies,
   getSliderMovies1,
   getSliderMovies2,
@@ -28,28 +36,39 @@ function SliderItem({
 
   return (
     <Fragment>
-      <Link to="#">
-        <h1 className="slider-headers">Latest Movies in Movie Mojo</h1>
-      </Link>
-      <SliderCom movies={movies} />
-      <Link to="#">
-        <h1 className="slider-headers">Popular Movies</h1>
-      </Link>
-      <SliderCom className="container-2" movies={movies1} />
-      <Link to="#">
-        <h1 className="slider-headers">Top Viewed Movies</h1>
-      </Link>
-      <SliderCom className="container-3" movies={movies2} />
+      {searchedMovies && searchedMovies.length > 0 && !error ? (
+        <Fragment>
+          <Link to="#">
+            <h1 className="slider-headers">Searched Movies Results...</h1>
+          </Link>
+          <SliderCom movies={searchedMovies} />
+        </Fragment>
+      ) : (
+        <Fragment>
+          <Link to="#">
+            <h1 className="slider-headers">Latest Movies in Movie Mojo</h1>
+          </Link>
+          <SliderCom movies={movies} />
+          <Link to="#">
+            <h1 className="slider-headers">Popular Movies</h1>
+          </Link>
+          <SliderCom className="container-2" movies={movies1} />
+          <Link to="#">
+            <h1 className="slider-headers">Top Viewed Movies</h1>
+          </Link>
+          <SliderCom className="container-3" movies={movies2} />
 
-      <Link to="#">
-        <h1 className="slider-headers">Action Thrillers</h1>
-        <SliderCom className="container-4" movies={movies3} />
-      </Link>
+          <Link to="#">
+            <h1 className="slider-headers">Action Thrillers</h1>
+            <SliderCom className="container-4" movies={movies3} />
+          </Link>
 
-      <Link to="#">
-        <h1 className="slider-headers">Movie Mojo Exclusive</h1>
-        <SliderCom className="container-5" movies={movies4} />
-      </Link>
+          <Link to="#">
+            <h1 className="slider-headers">Movie Mojo Exclusive</h1>
+            <SliderCom className="container-5" movies={movies4} />
+          </Link>
+        </Fragment>
+      )}
     </Fragment>
   );
 }

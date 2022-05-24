@@ -6,6 +6,8 @@ const initialSTate = {
   movies2: [{}],
   movies3: [{}],
   movies4: [{}],
+  searchedMovies: [{}],
+  error: false,
 };
 
 export default (state = initialSTate, action) => {
@@ -34,6 +36,17 @@ export default (state = initialSTate, action) => {
       return {
         ...state,
         movies4: action.payload,
+      };
+    case types.GET_SEARCHEDMOVIES:
+      return {
+        ...state,
+        error: false,
+        searchedMovies: action.payload,
+      };
+    case types.ERROR_SEARCHEDMOVIES:
+      return {
+        ...state,
+        error: true,
       };
     default:
       return state;

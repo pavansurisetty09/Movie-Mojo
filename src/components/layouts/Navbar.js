@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -6,11 +6,15 @@ import { BiLogIn } from "react-icons/bi";
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
 import { GoThreeBars } from "react-icons/go";
+import { getSearchedMovies } from "../../actions/sliderActions";
+import { connect } from "react-redux";
+
 // import { AiOutlineClose } from "react-icons/ai";
 
-function Navbar({ showSidebar }) {
+function Navbar({ showSidebar, getSearchedMovies }) {
   const [movieList, setMovieList] = useState([]);
   const [searchMovie, setSearchMovie] = useState("");
+  const text = useRef("");
 
   const search = (e) => {
     e.preventDefault();
@@ -34,7 +38,7 @@ function Navbar({ showSidebar }) {
 
   const handleChange = (e) => {
     e.preventDefault();
-    setSearchMovie({ searchMovie: e.target.value });
+    getSearchedMovies(text.current.value);
   };
 
   return (
@@ -66,6 +70,7 @@ function Navbar({ showSidebar }) {
                 placeholder="Search Movie..."
                 type="text"
                 className="search"
+                ref={text}
                 onChange={handleChange}
               />
             </form>
@@ -85,4 +90,4 @@ Navbar.propTypes = {
   showSidebar: PropTypes.func.isRequired,
 };
 
-export default Navbar;
+export default connect(null, { getSearchedMovies })(Navbar);
